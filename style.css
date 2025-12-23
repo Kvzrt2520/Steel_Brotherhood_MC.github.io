@@ -204,7 +204,7 @@ body {
 
 /* Стили для главного баннера */
 .main-banner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/image/q.jpg'); /* Градиент поверх картинки */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/q.jpg'); /* Градиент поверх картинки */
     background-size: cover; /* Картинка заполняет весь блок */
     background-position: center; /* Центрируем картинку */
     background-attachment: scroll; /* Фон прокручивается с содержимым */
@@ -1361,4 +1361,5 @@ body {
         padding: 8px 15px; /* Меньшие отступы */
         font-size: 0.9rem; /* Меньший размер шрифта */
     }
+
 }
