@@ -1,0 +1,1364 @@
+/* ==================== ОСНОВНЫЕ НАСТРОЙКИ ==================== */
+
+/* * - селектор для всех элементов на странице */
+* {
+    margin: 0; /* Убираем внешние отступы у всех элементов */
+    padding: 0; /* Убираем внутренние отступы у всех элементов */
+    box-sizing: border-box; /* Размер элемента включает padding и border, но не margin */
+}
+
+/* Стили для блока со статистикой событий */
+.events-stats {
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Стили для всего тела документа */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Набор шрифтов для текста */
+    background-color: #0f0f0f; /* Тёмный фон страницы */
+    color: #ffffff; /* Белый цвет текста */
+    line-height: 1.6; /* Высота строки (1.6 от размера шрифта) */
+    overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
+}
+
+/* Класс для центрирования содержимого и ограничения ширины */
+.container {
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Автоматические отступы слева и справа для центрирования */
+    padding: 0 20px; /* Отступы слева и справа внутри контейнера */
+}
+
+/* ==================== 1. ПРИВЕТСТВЕННОЕ СООБЩЕНИЕ ==================== */
+
+/* Стили для приветственного сообщения */
+.welcome-message {
+    position: fixed; /* Фиксированное положение относительно окна браузера */
+    top: 0; /* Прижимаем к верху */
+    left: 0; /* Прижимаем к левому краю */
+    width: 100%; /* На всю ширину окна */
+    height: 100%; /* На всю высоту окна */
+    background: rgb(15, 15, 15); /* Чёрный фон */
+    display: flex; /* Используем flexbox для выравнивания */
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+    align-items: center; /* Выравнивание по вертикали по центру */
+    z-index: 9999; /* Очень высокий z-index чтобы было поверх всего */
+    animation: fadeOut 3s ease forwards; /* Анимация исчезновения */
+}
+
+/* Текст приветственного сообщения */
+.welcome-text {
+    font-size: 3rem; /* Очень большой размер шрифта */
+    color: #ff6600; /* Оранжевый цвет текста */
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 20px; /* Внутренние отступы вокруг текста */
+    font-weight: bold; /* Жирный шрифт */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Тень текста */
+}
+
+/* Анимация для исчезновения приветственного сообщения */
+@keyframes fadeOut {
+    0% { opacity: 1; } /* Начало: полностью видимый */
+    100% { opacity: 1; visibility: hidden; } /* Конец: невидимый, но место занимает */
+    100% { opacity: 0; visibility: hidden; } /* Дублирующая строка для некоторых браузеров */
+}
+
+/* ==================== 2. ШАПКА САЙТА ==================== */
+
+/* Стили для шапки сайта */
+.header {
+    background: #1a1a1a; /* Тёмно-серый фон */
+    padding: 15px 0; /* Отступы сверху и снизу */
+    border-bottom: 3px solid #ff6600; /* Оранжевая линия внизу */
+    position: sticky; /* Липкая шапка при прокрутке */
+    top: 0; /* Прилипает к верху окна */
+    z-index: 100; /* Поверх других элементов, но под приветствием */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Тень под шапкой */
+}
+
+/* Навигационная панель внутри шапки */
+.nav {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+/* Стили для логотипа */
+.logo {
+    color: #ff6600; /* Оранжевый цвет текста */
+    font-size: 1.8rem; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    text-decoration: none; /* Убираем подчёркивание */
+    display: flex; /* Используем flexbox для иконки и текста */
+    align-items: center; /* Выравниваем иконку и текст по вертикали */
+    gap: 10px; /* Расстояние между иконкой и текстом */
+    transition: transform 0.3s ease; /* Плавная анимация при наведении */
+}
+
+/* Эффект при наведении на логотип */
+.logo:hover {
+    transform: scale(1.05); /* Увеличиваем логотип на 5% */
+}
+
+/* Меню навигации */
+.nav-menu {
+    display: flex; /* Горизонтальное меню */
+    list-style: none; /* Убираем маркеры списка */
+    gap: 25px; /* Расстояние между пунктами меню */
+}
+
+/* Ссылки в меню навигации */
+.nav-link {
+    color: #ffffff; /* Белый цвет текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закруглённые углы */
+    transition: all 0.3s ease; /* Плавный переход для всех свойств */
+    font-weight: 500; /* Средняя жирность шрифта */
+}
+
+/* Эффект при наведении на ссылку и активная ссылка */
+.nav-link:hover,
+.nav-link.active {
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+    transform: translateY(-2px); /* Сдвигаем вверх на 2px */
+    box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3); /* Тень */
+}
+
+/* Контейнер для кнопок в шапке */
+.header-buttons {
+    display: flex; /* Рядом друг с другом */
+    gap: 10px; /* Расстояние между кнопками */
+}
+
+/* Общие стили для кнопок в шапке */
+.time-toggle-btn,
+.translate-btn {
+    background: #333333; /* Тёмный фон */
+    color: #ffffff; /* Белый текст */
+    border: none; /* Без рамки */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закруглённые углы */
+    cursor: pointer; /* Курсор-указатель при наведении */
+    font-size: 1rem; /* Размер шрифта */
+    transition: all 0.3s ease; /* Плавный переход */
+    display: flex; /* Для выравнивания иконки и текста */
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 5px; /* Расстояние между иконкой и текстом */
+}
+
+/* Эффект при наведении на кнопки */
+.time-toggle-btn:hover,
+.translate-btn:hover {
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+    transform: translateY(-2px); /* Сдвигаем вверх */
+}
+
+/* ==================== 3. ВИДЖЕТ ВРЕМЕНИ ==================== */
+
+/* Стили для виджета с часами */
+.clock-widget {
+    position: fixed; /* Фиксированное положение */
+    top: 80px; /* Отступ сверху */
+    right: 20px; /* Отступ справа */
+    background: rgba(26, 26, 26, 0.95); /* Полупрозрачный тёмный фон */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Закруглённые углы */
+    border: 2px solid #ff6600; /* Оранжевая рамка */
+    z-index: 99; /* Поверх других элементов, но под шапкой */
+    min-width: 200px; /* Минимальная ширина */
+    text-align: center; /* Выравнивание текста по центру */
+    backdrop-filter: blur(10px); /* Размытие фона под виджетом */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Тень */
+    transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+/* Эффект при наведении на виджет времени */
+.clock-widget:hover {
+    transform: translateY(-2px); /* Сдвигаем вверх */
+}
+
+/* Класс для скрытия виджета времени */
+.clock-widget.hidden {
+    display: none; /* Скрываем элемент */
+}
+
+/* Стили для времени (часы:минуты:секунды) */
+.clock-time {
+    font-size: 2rem; /* Большой размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: #00ff00; /* Зелёный цвет */
+    font-family: 'Courier New', monospace; /* Моноширинный шрифт */
+    margin-bottom: 5px; /* Отступ снизу */
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3); /* Свечение текста */
+}
+
+/* Стили для даты */
+.clock-date {
+    font-size: 1rem; /* Обычный размер шрифта */
+    color: #cccccc; /* Светло-серый цвет */
+}
+
+/* ==================== 4. ГЛАВНЫЙ БАННЕР ==================== */
+
+/* Стили для главного баннера */
+.main-banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/image/q.jpg'); /* Градиент поверх картинки */
+    background-size: cover; /* Картинка заполняет весь блок */
+    background-position: center; /* Центрируем картинку */
+    background-attachment: scroll; /* Фон прокручивается с содержимым */
+    height: 500px; /* Высота баннера */
+    display: flex; /* Используем flexbox для центрирования */
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+    text-align: center; /* Текст по центру */
+    position: relative; /* Для позиционирования дочерних элементов */
+}
+
+/* ==================== 5. СТРУКТУРА КЛУБА ==================== */
+
+/* Сетка для структуры клуба */
+.structure-content {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Автоматические колонки */
+    gap: 25px; /* Расстояние между элементами */
+    margin: 30px 0; /* Отступы сверху и снизу */
+}
+
+/* Элемент структуры клуба */
+.structure-item {
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(255, 102, 0, 0.05) 100%); /* Градиентный фон */
+    padding: 25px; /* Внутренние отступы */
+    border-radius: 15px; /* Закруглённые углы */
+    border-left: 4px solid #ff6600; /* Оранжевая левая граница */
+    border-right: 1px solid rgba(255, 102, 0, 0.2); /* Правая граница */
+    border-top: 1px solid rgba(255, 102, 0, 0.2); /* Верхняя граница */
+    border-bottom: 1px solid rgba(255, 102, 0, 0.2); /* Нижняя граница */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на элемент структуры */
+.structure-item:hover {
+    transform: translateY(-5px); /* Сдвигаем вверх */
+    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.15); /* Тень */
+    border-left-color: #ff3300; /* Более тёмная левая граница */
+}
+
+/* Заголовок в элементе структуры */
+.structure-item h3 {
+    color: #ff6600; /* Оранжевый цвет */
+    font-size: 1.5rem; /* Размер шрифта */
+    margin-bottom: 15px; /* Отступ снизу */
+    padding-bottom: 10px; /* Отступ снизу для текста */
+    border-bottom: 1px solid rgba(255, 102, 0, 0.3); /* Линия под заголовком */
+}
+
+/* Текст в элементе структуры */
+.structure-item p {
+    color: #dddddd; /* Светло-серый цвет */
+    line-height: 1.7; /* Высота строки */
+    font-size: 1.05rem; /* Размер шрифта */
+}
+
+/* ==================== 6. ПРИНЦИПЫ ==================== */
+
+/* Список принципов */
+.principles-list {
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Вертикальное направление */
+    gap: 20px; /* Расстояние между элементами */
+    margin: 30px 0; /* Отступы сверху и снизу */
+}
+
+/* Элемент принципа */
+.principle-item {
+    display: flex; /* Используем flexbox */
+    align-items: flex-start; /* Выравниваем по верху */
+    gap: 20px; /* Расстояние между номером и текстом */
+    padding: 25px; /* Внутренние отступы */
+    background: rgba(26, 26, 26, 0.7); /* Полупрозрачный фон */
+    border-radius: 15px; /* Закруглённые углы */
+    border: 1px solid rgba(255, 102, 0, 0.2); /* Граница */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на принцип */
+.principle-item:hover {
+    background: rgba(255, 102, 0, 0.1); /* Оранжевый фон */
+    border-color: #ff6600; /* Оранжевая граница */
+    transform: translateX(10px); /* Сдвигаем вправо */
+}
+
+/* Номер принципа */
+.principle-number {
+    display: flex; /* Для центрирования числа */
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+    min-width: 50px; /* Минимальная ширина */
+    height: 50px; /* Высота */
+    background: linear-gradient(135deg, #ff6600 0%, #ff3300 100%); /* Градиентный фон */
+    color: #000000; /* Чёрный цвет текста */
+    font-size: 1.5rem; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    border-radius: 50%; /* Круглая форма */
+    flex-shrink: 0; /* Запрещаем сжатие */
+}
+
+/* Текст принципа */
+.principle-item p {
+    color: #ffffff; /* Белый цвет текста */
+    font-size: 1.1rem; /* Размер шрифта */
+    line-height: 1.7; /* Высота строки */
+    margin: 0; /* Убираем отступы */
+}
+
+/* ==================== 7. СТАТИСТИКА ==================== */
+
+/* Сетка для статистики */
+.stats-grid {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Автоматические колонки */
+    gap: 30px; /* Расстояние между элементами */
+    margin: 40px 0; /* Отступы сверху и снизу */
+}
+
+/* Элемент статистики */
+.stat-item {
+    text-align: center; /* Выравнивание по центру */
+    padding: 30px 20px; /* Внутренние отступы */
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%); /* Градиентный фон */
+    border-radius: 15px; /* Закруглённые углы */
+    border: 2px solid #333; /* Тёмная граница */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на элемент статистики */
+.stat-item:hover {
+    border-color: #ff6600; /* Оранжевая граница */
+    transform: translateY(-5px); /* Сдвигаем вверх */
+    box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2); /* Тень */
+}
+
+/* Число в статистике */
+.stat-number {
+    font-size: 3.5rem; /* Очень большой размер шрифта */
+    font-weight: 800; /* Очень жирный шрифт */
+    color: #ff6600; /* Оранжевый цвет */
+    margin-bottom: 10px; /* Отступ снизу */
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.3); /* Свечение */
+}
+
+/* Подпись в статистике */
+.stat-label {
+    color: #aaaaaa; /* Серый цвет */
+    font-size: 1.1rem; /* Размер шрифта */
+    font-weight: 500; /* Средняя жирность */
+}
+
+/* ==================== 8. ОПИСАНИЕ ГАЛЕРЕИ ==================== */
+
+/* Блок с описанием галереи */
+.gallery-description {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%); /* Градиентный фон */
+    padding: 40px; /* Внутренние отступы */
+    border-radius: 20px; /* Закруглённые углы */
+    margin: 40px 0; /* Отступы сверху и снизу */
+    border: 2px solid #333; /* Тёмная граница */
+}
+
+/* Заголовок в описании галереи */
+.gallery-description h2 {
+    color: #ff6600; /* Оранжевый цвет */
+    font-size: 2rem; /* Размер шрифта */
+    margin-bottom: 25px; /* Отступ снизу */
+    text-align: center; /* Выравнивание по центру */
+    position: relative; /* Для псевдоэлемента */
+    padding-bottom: 15px; /* Отступ снизу для линии */
+}
+
+/* Линия под заголовком галереи */
+.gallery-description h2::after {
+    content: ''; /* Пустой контент */
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 0; /* Прижимаем к низу */
+    left: 50%; /* Начинаем с середины */
+    transform: translateX(-50%); /* Сдвигаем на половину своей ширины */
+    width: 80px; /* Ширина линии */
+    height: 3px; /* Высота линии */
+    background: #ff6600; /* Оранжевый цвет */
+}
+
+/* Контент описания галереи */
+.description-content {
+    max-width: 800px; /* Максимальная ширина */
+    margin: 0 auto 40px; /* Центрирование и отступ снизу */
+}
+
+/* Текст в описании галереи */
+.description-content p {
+    color: #dddddd; /* Светло-серый цвет */
+    font-size: 1.1rem; /* Размер шрифта */
+    line-height: 1.8; /* Высота строки */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-align: center; /* Выравнивание по центру */
+}
+
+/* Сетка статистики галереи */
+.gallery-stats {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Автоматические колонки */
+    gap: 20px; /* Расстояние между элементами */
+    max-width: 600px; /* Максимальная ширина */
+    margin: 0 auto; /* Центрирование */
+}
+
+/* Элемент статистики галереи */
+.gallery-stat {
+    text-align: center; /* Выравнивание по центру */
+    padding: 20px; /* Внутренние отступы */
+    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный чёрный фон */
+    border-radius: 10px; /* Закруглённые углы */
+    border: 1px solid rgba(255, 102, 0, 0.2); /* Граница */
+}
+
+/* Число в статистике галереи */
+.gallery-stat .stat-number {
+    font-size: 2.5rem; /* Размер шрифта */
+    margin-bottom: 8px; /* Отступ снизу */
+}
+
+/* Подпись в статистике галереи */
+.gallery-stat .stat-label {
+    font-size: 1rem; /* Размер шрифта */
+    color: #bbbbbb; /* Серый цвет */
+}
+
+/* ==================== 9. ИСТОРИЧЕСКИЕ СОБЫТИЯ ==================== */
+
+/* Лента времени для исторических событий */
+.events-timeline {
+    position: relative; /* Для псевдоэлемента */
+    max-width: 900px; /* Максимальная ширина */
+    margin: 40px auto; /* Центрирование и отступы */
+    padding-left: 30px; /* Отступ слева для линии времени */
+}
+
+/* Вертикальная линия времени */
+.events-timeline::before {
+    content: ''; /* Пустой контент */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 15px; /* Позиция слева */
+    top: 0; /* От верха */
+    bottom: 0; /* До низа */
+    width: 3px; /* Ширина линии */
+    background: linear-gradient(to bottom, #ff6600, #ff3300); /* Градиентная линия */
+    border-radius: 3px; /* Закруглённые края */
+}
+
+/* Элемент на ленте времени */
+.timeline-item {
+    position: relative; /* Для позиционирования года */
+    margin-bottom: 40px; /* Отступ снизу между элементами */
+}
+
+/* Год на ленте времени */
+.timeline-year {
+    position: absolute; /* Абсолютное позиционирование */
+    left: -30px; /* Сдвигаем влево за линию */
+    top: 0; /* Выравниваем по верху */
+    background: linear-gradient(135deg, #ff6600 0%, #ff3300 100%); /* Градиентный фон */
+    color: #000000; /* Чёрный текст */
+    padding: 8px 15px; /* Внутренние отступы */
+    border-radius: 20px; /* Овальная форма */
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 1.1rem; /* Размер шрифта */
+    min-width: 80px; /* Минимальная ширина */
+    text-align: center; /* Выравнивание по центру */
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3); /* Тень */
+}
+
+/* Контент элемента на ленте времени */
+.timeline-content {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%); /* Градиентный фон */
+    padding: 25px; /* Внутренние отступы */
+    margin-left: 40px; /* Отступ слева от года */
+    border-radius: 15px; /* Закруглённые углы */
+    border: 1px solid rgba(255, 102, 0, 0.2); /* Граница */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на контент ленты времени */
+.timeline-content:hover {
+    transform: translateX(10px); /* Сдвигаем вправо */
+    border-color: #ff6600; /* Оранжевая граница */
+    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.15); /* Тень */
+}
+
+/* Заголовок в контенте ленты времени */
+.timeline-content h3 {
+    color: #ff6600; /* Оранжевый цвет */
+    font-size: 1.5rem; /* Размер шрифта */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Текст в контенте ленты времени */
+.timeline-content p {
+    color: #dddddd; /* Светло-серый цвет */
+    line-height: 1.7; /* Высота строки */
+}
+
+/* ==================== 10. ОСНОВНЫЕ ОПИСАНИЯ ==================== */
+
+/* Общие стили для вводных блоков */
+.about-hero-content,
+.events-intro,
+.gallery-intro {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%); /* Градиентный фон */
+    padding: 40px; /* Внутренние отступы */
+    border-radius: 20px; /* Закруглённые углы */
+    margin: 40px 0; /* Отступы сверху и снизу */
+    border: 2px solid rgba(255, 102, 0, 0.3); /* Полупрозрачная оранжевая граница */
+}
+
+/* Заголовки вводных блоков */
+.about-hero-content h2,
+.events-intro h2,
+.gallery-intro h2 {
+    color: #ff6600; /* Оранжевый цвет */
+    font-size: 2rem; /* Размер шрифта */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-align: center; /* Выравнивание по центру */
+}
+
+/* Текст вводных блоков */
+.about-hero-content p,
+.events-intro p,
+.gallery-intro p {
+    color: #dddddd; /* Светло-серый цвет */
+    font-size: 1.15rem; /* Размер шрифта */
+    line-height: 1.8; /* Высота строки */
+    text-align: center; /* Выравнивание по центру */
+    max-width: 800px; /* Максимальная ширина */
+    margin: 0 auto; /* Центрирование */
+}
+
+/* ==================== 11. КАРТОЧКИ СОБЫТИЙ ==================== */
+
+/* Большая карточка события */
+.event-card-large {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%); /* Градиентный фон */
+    padding: 30px; /* Внутренние отступы */
+    border-radius: 20px; /* Закруглённые углы */
+    border: 2px solid #333; /* Тёмная граница */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на большую карточку события */
+.event-card-large:hover {
+    border-color: #ff6600; /* Оранжевая граница */
+    transform: translateY(-8px); /* Сдвигаем вверх */
+    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.2); /* Тень */
+}
+
+/* Шапка карточки события */
+.event-card-header {
+    display: flex; /* Используем flexbox */
+    justify-content: space-between; /* Распределяем пространство */
+    align-items: center; /* Выравниваем по вертикали */
+    margin-bottom: 20px; /* Отступ снизу */
+    flex-wrap: wrap; /* Перенос на новую строку если не помещается */
+    gap: 10px; /* Расстояние между элементами */
+}
+
+/* Категория события */
+.event-category {
+    background: rgba(255, 102, 0, 0.2); /* Полупрозрачный оранжевый фон */
+    color: #ff6600; /* Оранжевый текст */
+    padding: 6px 15px; /* Внутренние отступы */
+    border-radius: 20px; /* Овальная форма */
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 0.9rem; /* Размер шрифта */
+}
+
+/* Дата события */
+.event-date {
+    background: rgba(255, 255, 255, 0.1); /* Полупрозрачный белый фон */
+    color: #ffffff; /* Белый текст */
+    padding: 6px 15px; /* Внутренние отступы */
+    border-radius: 20px; /* Овальная форма */
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 0.9rem; /* Размер шрифта */
+}
+
+/* Заголовок в большой карточке события */
+.event-card-large h3 {
+    color: #ffffff; /* Белый цвет */
+    font-size: 1.8rem; /* Размер шрифта */
+    margin-bottom: 15px; /* Отступ снизу */
+    line-height: 1.3; /* Высота строки */
+}
+
+/* Текст в большой карточке события */
+.event-card-large p {
+    color: #bbbbbb; /* Серый цвет */
+    line-height: 1.7; /* Высота строки */
+    margin-bottom: 20px; /* Отступ снизу */
+    font-size: 1.05rem; /* Размер шрифта */
+}
+
+/* Статистика события */
+.event-stats {
+    display: flex; /* Используем flexbox */
+    gap: 20px; /* Расстояние между элементами */
+    flex-wrap: wrap; /* Перенос на новую строку */
+    margin-top: 20px; /* Отступ сверху */
+    padding-top: 20px; /* Отступ сверху */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Разделительная линия */
+}
+
+/* Элемент статистики события */
+.event-stats span {
+    background: rgba(255, 102, 0, 0.1); /* Полупрозрачный оранжевый фон */
+    color: #ff9900; /* Светло-оранжевый текст */
+    padding: 8px 15px; /* Внутренние отступы */
+    border-radius: 10px; /* Закруглённые углы */
+    font-weight: bold; /* Жирный шрифт */
+    font-size: 0.9rem; /* Размер шрифта */
+}
+
+/* ==================== 12. АДАПТИВНОСТЬ ==================== */
+
+/* Медиа-запрос для планшетов и мобильных (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Адаптация сетки структуры */
+    .structure-content {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    /* Адаптация сетки статистики */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки */
+        gap: 20px; /* Меньшее расстояние */
+    }
+
+    /* Адаптация элементов принципов */
+    .principle-item {
+        flex-direction: column; /* Вертикальное расположение */
+        align-items: center; /* Выравнивание по центру */
+        text-align: center; /* Текст по центру */
+        gap: 15px; /* Расстояние между элементами */
+    }
+
+    /* Адаптация ленты времени */
+    .events-timeline {
+        padding-left: 20px; /* Меньший отступ */
+    }
+
+    /* Адаптация года на ленте времени */
+    .timeline-year {
+        position: relative; /* Относительное позиционирование */
+        left: 0; /* Сбрасываем сдвиг */
+        margin-bottom: 15px; /* Отступ снизу */
+        display: inline-block; /* Строчно-блочный элемент */
+    }
+
+    /* Адаптация контента ленты времени */
+    .timeline-content {
+        margin-left: 0; /* Убираем отступ */
+    }
+
+    /* Адаптация вводных блоков */
+    .about-hero-content,
+    .events-intro,
+    .gallery-intro,
+    .gallery-description {
+        padding: 25px; /* Меньшие отступы */
+    }
+
+    /* Адаптация числа в статистике */
+    .stat-number {
+        font-size: 2.8rem; /* Немного меньше */
+    }
+
+    /* Адаптация статистики галереи */
+    .gallery-stats {
+        grid-template-columns: repeat(2, 1fr); /* Две колонки */
+    }
+}
+
+/* Медиа-запрос для маленьких мобильных (ширина до 480px) */
+@media (max-width: 480px) {
+    /* Адаптация сетки статистики */
+    .stats-grid {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    /* Адаптация статистики галереи */
+    .gallery-stats {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    /* Адаптация шапки карточки события */
+    .event-card-header {
+        flex-direction: column; /* Вертикальное расположение */
+        align-items: flex-start; /* Выравнивание по левому краю */
+    }
+
+    /* Адаптация статистики события */
+    .event-stats {
+        flex-direction: column; /* Вертикальное расположение */
+        gap: 10px; /* Меньшее расстояние */
+    }
+
+    /* Адаптация внутренних отступов */
+    .structure-item,
+    .principle-item,
+    .timeline-content,
+    .event-card-large {
+        padding: 20px; /* Меньшие отступы */
+    }
+
+    /* Адаптация номера принципа */
+    .principle-number {
+        min-width: 40px; /* Меньшая ширина */
+        height: 40px; /* Меньшая высота */
+        font-size: 1.2rem; /* Меньший размер шрифта */
+    }
+}
+
+/* ==================== 13. ГЛАВНЫЙ БАННЕР (продолжение) ==================== */
+
+/* Контент внутри баннера */
+.banner-content h1 {
+    font-size: 3.5rem; /* Очень большой размер шрифта */
+    color: #ff6600; /* Оранжевый цвет */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Тень текста */
+    font-weight: bold; /* Жирный шрифт */
+}
+
+.banner-content p {
+    font-size: 2rem; /* Большой размер шрифта */
+    margin: 10px 0; /* Отступы сверху и снизу */
+    color: #ffffff; /* Белый цвет */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Тень текста */
+}
+
+/* ==================== 14. ОСНОВНОЙ КОНТЕНТ ==================== */
+
+/* Основной контейнер контента */
+.main-content {
+    padding: 40px 0; /* Отступы сверху и снизу */
+}
+
+/* Заголовок секции */
+.section-title {
+    font-size: 2.5rem; /* Большой размер шрифта */
+    color: #ff6600; /* Оранжевый цвет */
+    margin: 40px 0 30px; /* Отступы: сверху 40px, снизу 30px */
+    text-align: center; /* Выравнивание по центру */
+    position: relative; /* Для псевдоэлемента */
+    padding-bottom: 15px; /* Отступ снизу для линии */
+}
+
+/* Линия под заголовком секции */
+.section-title::after {
+    content: ''; /* Пустой контент */
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 0; /* Прижимаем к низу */
+    left: 50%; /* Начинаем с середины */
+    transform: translateX(-50%); /* Сдвигаем на половину своей ширины */
+    width: 100px; /* Ширина линии */
+    height: 3px; /* Высота линии */
+    background: #ff6600; /* Оранжевый цвет */
+}
+
+/* Подзаголовок секции */
+.section-subtitle {
+    font-size: 2rem; /* Большой размер шрифта */
+    color: #ffffff; /* Белый цвет */
+    margin: 30px 0 20px; /* Отступы: сверху 30px, снизу 20px */
+    text-align: center; /* Выравнивание по центру */
+}
+
+/* ==================== 15. ПОГОДА ==================== */
+
+/* Контейнер для погоды с использованием CSS Grid */
+.weather-container {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: 1fr 1fr; /* Две колонки одинаковой ширины */
+    gap: 20px; /* Расстояние между колонками */
+}
+
+/* Основная информация о погоде */
+.weather-main {
+    text-align: center; /* Выравнивание по центру */
+}
+
+/* Город в погоде */
+.weather-city {
+    font-size: 1.5rem; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: #ff9900; /* Светло-оранжевый цвет */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Температура */
+.weather-temp {
+    font-size: 3rem; /* Очень большой размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: #ff6600; /* Оранжевый цвет */
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+/* Описание погоды */
+.weather-desc {
+    font-size: 1.2rem; /* Размер шрифта */
+    color: #ffffff; /* Белый цвет */
+    text-transform: capitalize; /* Каждое слово с заглавной буквы */
+}
+
+/* Изображение погоды */
+.weather-image {
+    text-align: center; /* Выравнивание по центру */
+    padding: 20px; /* Внутренние отступы */
+    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный чёрный фон */
+    border-radius: 10px; /* Закруглённые углы */
+    border: 2px solid #333; /* Тёмная граница */
+}
+
+/* Эмодзи погоды */
+.weather-emoji {
+    font-size: 4rem; /* Очень большой размер для эмодзи */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Совет по погоде */
+.weather-advice {
+    font-size: 1rem; /* Размер шрифта */
+    color: #cccccc; /* Светло-серый цвет */
+    line-height: 1.4; /* Высота строки */
+}
+
+/* Детали погоды */
+.weather-details {
+    grid-column: 1 / -1; /* Занимает все колонки */
+    display: grid; /* Внутренняя сетка */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Автоматические колонки */
+    gap: 15px; /* Расстояние между элементами */
+    margin-top: 20px; /* Отступ сверху */
+    padding: 15px; /* Внутренние отступы */
+    background: rgba(0, 0, 0, 0.2); /* Полупрозрачный фон */
+    border-radius: 10px; /* Закруглённые углы */
+}
+
+/* Отдельная деталь погоды */
+.weather-detail {
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Вертикальное направление */
+    align-items: center; /* Выравнивание по центру */
+    text-align: center; /* Текст по центру */
+}
+
+/* Подпись детали */
+.detail-label {
+    font-size: 0.9rem; /* Небольшой размер шрифта */
+    color: #aaaaaa; /* Серый цвет */
+    margin-bottom: 5px; /* Отступ снизу */
+}
+
+/* Значение детали */
+.detail-value {
+    font-size: 1.2rem; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: #ffffff; /* Белый цвет */
+}
+
+/* Смена города в погоде */
+.weather-change {
+    grid-column: 1 / -1; /* Занимает все колонки */
+    text-align: center; /* Выравнивание по центру */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+/* Кнопка смены города */
+.weather-change-btn {
+    background: transparent; /* Прозрачный фон */
+    color: #ff6600; /* Оранжевый цвет */
+    border: 2px solid #ff6600; /* Оранжевая рамка */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закруглённые углы */
+    cursor: pointer; /* Курсор-указатель */
+    font-weight: bold; /* Жирный шрифт */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на кнопку смены города */
+.weather-change-btn:hover {
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+}
+
+/* Адаптивность для погоды на мобильных устройствах */
+@media (max-width: 768px) {
+    .weather-container {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    .weather-temp {
+        font-size: 2.5rem; /* Меньший размер шрифта */
+    }
+
+    .weather-emoji {
+        font-size: 3rem; /* Меньший размер эмодзи */
+    }
+}
+
+/* Кнопка обновления погоды */
+.refresh-btn {
+    background: linear-gradient(135deg, #ff6600 0%, #ff3300 100%); /* Градиентный фон */
+    color: #000000; /* Чёрный текст */
+    border: none; /* Без рамки */
+    padding: 12px 25px; /* Внутренние отступы */
+    border-radius: 5px; /* Закруглённые углы */
+    cursor: pointer; /* Курсор-указатель */
+    font-weight: bold; /* Жирный шрифт */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на кнопку обновления */
+.refresh-btn:hover {
+    transform: translateY(-2px); /* Сдвигаем вверх */
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3); /* Тень */
+}
+
+/* Секция погоды */
+.weather-section {
+    text-align: center; /* Выравнивание по центру */
+}
+
+/* ==================== 16. СЕТКИ ДЛЯ КОНТЕНТА ==================== */
+
+/* Вводная сетка и сетка событий (первый вариант) */
+.intro-grid,
+.events-grid1 {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Автоматические колонки */
+    gap: 30px; /* Расстояние между элементами */
+    margin: 30px 0; /* Отступы сверху и снизу */
+}
+
+/* Сетки для различных типов контента */
+.events-grid,
+.values-grid,
+.local-events-grid,
+.gallery-grid,
+.stats-grid,
+.video-grid {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Автоматические колонки */
+    gap: 30px; /* Расстояние между элементами */
+    margin: 30px 0; /* Отступы сверху и снизу */
+}
+
+/* Общие стили для карточек */
+.intro-card,
+.value-card,
+.event-card,
+.local-event-card,
+.gallery-item,
+.video-item {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Градиентный фон */
+    padding: 25px; /* Внутренние отступы */
+    border-radius: 15px; /* Закруглённые углы */
+    border: 1px solid #333333; /* Тёмная граница */
+    transition: all 0.3s ease; /* Плавный переход */
+    position: relative; /* Для псевдоэлемента */
+    overflow: hidden; /* Скрываем выходящее за границы */
+}
+
+/* Псевдоэлемент для анимации при наведении на карточки */
+.intro-card::before,
+.value-card::before,
+.event-card::before {
+    content: ''; /* Пустой контент */
+    position: absolute; /* Абсолютное позиционирование */
+    top: 0; /* Сверху */
+    left: 0; /* Слева */
+    width: 5px; /* Ширина */
+    height: 100%; /* На всю высоту */
+    background: #ff6600; /* Оранжевый цвет */
+    transition: transform 0.3s ease; /* Плавная анимация */
+    transform: scaleY(0); /* Изначально скрыт (высота 0) */
+}
+
+/* Анимация при наведении на карточки */
+.intro-card:hover::before,
+.value-card:hover::before,
+.event-card:hover::before {
+    transform: scaleY(1); /* Показываем псевдоэлемент */
+}
+
+/* Эффект при наведении на все типы карточек */
+.intro-card:hover,
+.value-card:hover,
+.event-card:hover,
+.local-event-card:hover,
+.gallery-item:hover,
+.video-item:hover {
+    transform: translateY(-10px); /* Сдвигаем вверх */
+    box-shadow: 0 10px 25px rgba(255, 102, 0, 0.2); /* Тень */
+    border-color: #ff6600; /* Оранжевая граница */
+}
+
+/* Иконки в карточках */
+.intro-icon,
+.value-icon {
+    font-size: 3rem; /* Большой размер для иконок */
+    margin-bottom: 20px; /* Отступ снизу */
+    color: #ff6600; /* Оранжевый цвет */
+}
+
+/* Заголовки в карточках */
+.intro-card h3,
+.value-card h3,
+.event-card h3,
+.local-event-card h3,
+.gallery-caption h3,
+.video-item h3 {
+    color: #ff6600; /* Оранжевый цвет */
+    margin-bottom: 15px; /* Отступ снизу */
+    font-size: 1.5rem; /* Размер шрифта */
+}
+
+/* Дата события */
+.event-date,
+.local-event-date {
+    display: inline-block; /* Блочно-строчный элемент */
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+    padding: 8px 15px; /* Внутренние отступы */
+    border-radius: 20px; /* Овальная форма */
+    font-weight: bold; /* Жирный шрифт */
+    margin-bottom: 15px; /* Отступ снизу */
+    font-size: 0.9rem; /* Размер шрифта */
+}
+
+/* Ссылка на событие */
+.event-link {
+    display: inline-block; /* Блочно-строчный элемент */
+    color: #ff6600; /* Оранжевый цвет */
+    text-decoration: none; /* Без подчёркивания */
+    margin-top: 15px; /* Отступ сверху */
+    font-weight: bold; /* Жирный шрифт */
+    transition: all 0.3s ease; /* Плавный переход */
+}
+
+/* Эффект при наведении на ссылку события */
+.event-link:hover {
+    color: #ffffff; /* Белый цвет */
+    transform: translateX(5px); /* Сдвигаем вправо */
+}
+
+/* ==================== 17. ГАЛЕРЕЯ ==================== */
+
+/* Фильтры галереи */
+.gallery-filters {
+    display: flex; /* Используем flexbox */
+    justify-content: center; /* Выравнивание по центру */
+    gap: 15px; /* Расстояние между кнопками */
+    margin: 30px 0; /* Отступы сверху и снизу */
+    flex-wrap: wrap; /* Перенос на новую строку */
+}
+
+/* Кнопка фильтра */
+.filter-btn {
+    background: #2a2a2a; /* Тёмный фон */
+    color: #cccccc; /* Серый текст */
+    border: 2px solid #333333; /* Тёмная граница */
+    padding: 10px 25px; /* Внутренние отступы */
+    border-radius: 25px; /* Овальная форма */
+    cursor: pointer; /* Курсор-указатель */
+    transition: all 0.3s ease; /* Плавный переход */
+    font-weight: 500; /* Средняя жирность */
+}
+
+/* Эффект при наведении и активная кнопка фильтра */
+.filter-btn:hover,
+.filter-btn.active {
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+    border-color: #ff6600; /* Оранжевая граница */
+    transform: translateY(-2px); /* Сдвигаем вверх */
+}
+
+/* Изображение в галерее */
+.gallery-image {
+    font-size: 4rem; /* Очень большой размер для эмодзи/текста */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 20px; /* Отступ снизу */
+    height: 200px; /* Фиксированная высота */
+    display: grid; /* Используем grid для центрирования */
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+    background: rgba(0, 0, 0, 0.3); /* Полупрозрачный фон */
+    border-radius: 10px; /* Закруглённые углы */
+}
+
+/* Подпись в галерее */
+.gallery-caption {
+    padding: 15px 0 0; /* Внутренние отступы: сверху 15px, снизу 0 */
+}
+
+/* ==================== 18. ПРИЗЫВ К ДЕЙСТВИЮ ==================== */
+
+/* Секции призыва к действию */
+.cta-section,
+.about-cta,
+.gallery-cta {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Градиентный фон */
+    padding: 50px; /* Внутренние отступы */
+    border-radius: 15px; /* Закруглённые углы */
+    margin: 50px 0; /* Отступы сверху и снизу */
+    text-align: center; /* Выравнивание по центру */
+    border: 2px solid #ff6600; /* Оранжевая граница */
+}
+
+/* Заголовок в секции призыва */
+.cta-section h2,
+.about-cta h2,
+.gallery-cta h2 {
+    color: #ff6600; /* Оранжевый цвет */
+    margin-bottom: 20px; /* Отступ снизу */
+    font-size: 2.5rem; /* Размер шрифта */
+}
+
+/* Кнопки в секции призыва */
+.cta-buttons {
+    display: flex; /* Используем flexbox */
+    justify-content: center; /* Выравнивание по центру */
+    gap: 20px; /* Расстояние между кнопками */
+    margin-top: 30px; /* Отступ сверху */
+    flex-wrap: wrap; /* Перенос на новую строку */
+}
+
+/* Общие стили для кнопок */
+.btn {
+    display: inline-block; /* Блочно-строчный элемент */
+    padding: 15px 35px; /* Внутренние отступы */
+    border-radius: 5px; /* Закруглённые углы */
+    text-decoration: none; /* Без подчёркивания */
+    font-weight: bold; /* Жирный шрифт */
+    transition: all 0.3s ease; /* Плавный переход */
+    border: none; /* Без рамки */
+    cursor: pointer; /* Курсор-указатель */
+    font-size: 1.1rem; /* Размер шрифта */
+}
+
+/* Основная кнопка */
+.btn-primary {
+    background: transparent; /* Прозрачный фон */
+    color: #ff6600; /* Оранжевый цвет */
+    border: 2px solid #ff6600; /* Оранжевая рамка */
+}
+
+/* Эффект при наведении на основную кнопку */
+.btn-primary:hover {
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+    transform: translateY(-3px); /* Сдвигаем вверх */
+    box-shadow: 0 10px 25px rgba(255, 102, 0, 0.2); /* Тень */
+}
+
+/* Вторичная кнопка */
+.btn-secondary {
+    background: transparent; /* Прозрачный фон */
+    color: #ff6600; /* Оранжевый цвет */
+    border: 2px solid #ff6600; /* Оранжевая рамка */
+}
+
+/* Эффект при наведении на вторичную кнопку */
+.btn-secondary:hover {
+    background: #ff6600; /* Оранжевый фон */
+    color: #000000; /* Чёрный текст */
+    transform: translateY(-3px); /* Сдвигаем вверх */
+    box-shadow: 0 10px 25px rgba(255, 102, 0, 0.2); /* Тень */
+}
+
+/* ==================== 19. ПОДВАЛ ==================== */
+
+/* Подвал сайта */
+.footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); /* Градиентный фон */
+    padding: 50px 0 20px; /* Отступы: сверху 50px, снизу 20px */
+    margin-top: 80px; /* Отступ сверху */
+    border-top: 3px solid #ff6600; /* Оранжевая линия сверху */
+}
+
+/* Контент подвала */
+.footer-content {
+    display: grid; /* Используем CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Автоматические колонки */
+    gap: 40px; /* Расстояние между колонками */
+    margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Колонка в подвале */
+.footer-section h4 {
+    color: #ff6600; /* Оранжевый цвет */
+    margin-bottom: 20px; /* Отступ снизу */
+    font-size: 1.3rem; /* Размер шрифта */
+}
+
+/* Текст и ссылки в колонке подвала */
+.footer-section p,
+.footer-section a {
+    color: #aaaaaa; /* Серый цвет */
+    margin-bottom: 10px; /* Отступ снизу */
+    display: block; /* Блочный элемент */
+    text-decoration: none; /* Без подчёркивания */
+    transition: color 0.3s ease; /* Плавный переход цвета */
+}
+
+/* Эффект при наведении на ссылки в подвале */
+.footer-section a:hover {
+    color: #ff6600; /* Оранжевый цвет */
+}
+
+/* Нижняя часть подвала */
+.footer-bottom {
+    text-align: center; /* Выравнивание по центру */
+    padding-top: 20px; /* Отступ сверху */
+    border-top: 1px solid #333333; /* Разделительная линия */
+    color: #777777; /* Серый цвет */
+    font-size: 0.9rem; /* Небольшой размер шрифта */
+}
+
+/* ==================== 20. АДАПТИВНОСТЬ ==================== */
+
+/* Медиа-запрос для планшетов (ширина до 992px) */
+@media (max-width: 992px) {
+    .banner-content h1 {
+        font-size: 2.8rem; /* Меньший размер шрифта */
+    }
+
+    .section-title {
+        font-size: 2.2rem; /* Меньший размер шрифта */
+    }
+
+    .section-subtitle {
+        font-size: 1.8rem; /* Меньший размер шрифта */
+    }
+}
+
+/* Медиа-запрос для планшетов и мобильных (ширина до 768px) */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column; /* Вертикальное расположение */
+        gap: 20px; /* Расстояние между элементами */
+    }
+
+    .nav-menu {
+        flex-wrap: wrap; /* Перенос пунктов меню */
+        justify-content: center; /* Выравнивание по центру */
+        gap: 15px; /* Меньшее расстояние */
+    }
+
+    .main-banner {
+        height: 400px; /* Меньшая высота */
+        background-attachment: scroll; /* Фон прокручивается */
+    }
+
+    .banner-content h1 {
+        font-size: 2.2rem; /* Меньший размер шрифта */
+    }
+
+    .banner-content p {
+        font-size: 1.2rem; /* Меньший размер шрифта */
+    }
+
+    .section-title {
+        font-size: 2rem; /* Меньший размер шрифта */
+        left: 5px; /* Небольшой сдвиг */
+    }
+
+    .events-grid1 {
+        display: grid; /* Используем CSS Grid */
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Автоматические колонки */
+    }
+
+    /* Все сетки становятся одноколоночными */
+    .intro-grid,
+    .events-grid,
+    .values-grid,
+    .local-events-grid,
+    .gallery-grid,
+    .stats-grid,
+    .video-grid {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 20px; /* Меньшее расстояние */
+    }
+
+    /* Виджет времени становится не фиксированным */
+    .clock-widget {
+        position: fixed; /* Фиксированное положение */
+        top: auto; /* Сброс позиции сверху */
+        right: auto; /* Сброс позиции справа */
+        margin: 10px auto; /* Автоматические отступы */
+        width: 100%; /* На всю ширину */
+    }
+
+    /* Уменьшаем отступы в секциях призыва */
+    .cta-section,
+    .about-cta,
+    .gallery-cta {
+        padding: 30px 20px; /* Меньшие отступы */
+    }
+
+    /* Подвал становится одноколоночным */
+    .footer-content {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 30px; /* Меньшее расстояние */
+    }
+}
+
+/* Медиа-запрос для маленьких мобильных (ширина до 480px) */
+@media (max-width: 480px) {
+    .logo span:last-child {
+        font-size: 1.5rem; /* Меньший размер текста логотипа */
+    }
+
+    .nav-link {
+        padding: 8px 12px; /* Меньшие отступы */
+        font-size: 0.9rem; /* Меньший размер шрифта */
+    }
+
+    .banner-content h1 {
+        font-size: 1.8rem; /* Меньший размер шрифта */
+    }
+
+    .welcome-text {
+        font-size: 2rem; /* Меньший размер шрифта */
+    }
+
+    .section-title {
+        font-size: 1.8rem; /* Меньший размер шрифта */
+    }
+
+    .btn {
+        padding: 12px 25px; /* Меньшие отступы */
+        font-size: 1rem; /* Меньший размер шрифта */
+    }
+
+    .header-buttons {
+        flex-direction: column; /* Вертикальное расположение кнопок */
+        gap: 5px; /* Маленькое расстояние */
+    }
+
+    .time-toggle-btn,
+    .translate-btn {
+        padding: 8px 15px; /* Меньшие отступы */
+        font-size: 0.9rem; /* Меньший размер шрифта */
+    }
+}
