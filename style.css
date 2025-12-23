@@ -1328,7 +1328,10 @@ body {
     .logo span:last-child {
         font-size: 1.5rem; /* Меньший размер текста логотипа */
     }
-
+    .events-grid1 {
+        display: grid; /* Используем CSS Grid */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Автоматические колонки */
+    }
     .nav-link {
         padding: 8px 12px; /* Меньшие отступы */
         font-size: 0.9rem; /* Меньший размер шрифта */
@@ -1362,6 +1365,7 @@ body {
         font-size: 0.9rem; /* Меньший размер шрифта */
     }
 }
+
 
 
 
