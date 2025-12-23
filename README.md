@@ -1,4 +1,3 @@
-# Steel_Brotherhood_MC.github.io
 <!-- Объявление типа документа - HTML5 -->
 <!DOCTYPE html>
 <!-- Начало HTML документа, язык - русский -->
