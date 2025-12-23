@@ -723,7 +723,7 @@ body {
     .principle-number {
         min-width: 40px; /* Меньшая ширина */
         height: 40px; /* Меньшая высота */
-        font-size: 1.2rem; /* Меньший размер шрифта */
+        font-size: 1rem; /* Меньший размер шрифта */
     }
 }
 
@@ -974,7 +974,7 @@ body {
     border-radius: 15px; /* Закруглённые углы */
     border: 1px solid #333333; /* Тёмная граница */
     transition: all 0.3s ease; /* Плавный переход */
-    position: absolute; /* Для псевдоэлемента */
+    position: relative; /* Для псевдоэлемента */
     overflow: hidden; /* Скрываем выходящее за границы */
 }
 
@@ -1361,7 +1361,4 @@ body {
         padding: 8px 15px; /* Меньшие отступы */
         font-size: 0.9rem; /* Меньший размер шрифта */
     }
-
 }
-
-
