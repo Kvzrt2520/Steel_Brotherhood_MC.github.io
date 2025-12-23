@@ -1285,7 +1285,7 @@ body {
 
     .events-grid1 {
         display: grid; /* Используем CSS Grid */
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Автоматические колонки */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Автоматические колонки */
     }
 
     /* Все сетки становятся одноколоночными */
@@ -1362,3 +1362,4 @@ body {
         font-size: 0.9rem; /* Меньший размер шрифта */
     }
 }
+
