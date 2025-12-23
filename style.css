@@ -974,7 +974,7 @@ body {
     border-radius: 15px; /* Закруглённые углы */
     border: 1px solid #333333; /* Тёмная граница */
     transition: all 0.3s ease; /* Плавный переход */
-    position: relative; /* Для псевдоэлемента */
+    position: absolute; /* Для псевдоэлемента */
     overflow: hidden; /* Скрываем выходящее за границы */
 }
 
@@ -1363,4 +1363,5 @@ body {
     }
 
 }
+
 
